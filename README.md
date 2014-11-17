@@ -13,6 +13,12 @@ It's compatible with a subset of the functionality in `html/template`.
 Example usage (after running `go-bindata data/...` in your project directory):
 
 ```go
+import (
+  "github.com/arschles/go-bindata-html-template"
+)
+
+//...
+
 func myHandler(res http.ResponseWriter, req *http.Request) {
   tmpl, err := template.New("mytmpl", Asset).Parse("data/templates/my.tmpl")
   if err != nil {
