@@ -3,9 +3,24 @@ package template
 import (
 	"html/template"
 	"io"
+	"fmt"
 )
 
 type AssetFunc func(string) ([]byte, error)
+
+// Must is a helper that wraps a call to a function returning
+// (*Template, error) and panics if the error is non-nil. It is intended for
+// use in variable initializations such as
+//	var t = template.Must(template.New("name").Parse("templates/my.tmpl"))
+func Must(t *Template, err error) *Template {
+	if err != nil {
+		panic(fmt.Sprintf("template error: %s", err))
+	}
+	if t == nil {
+		panic(fmt.Sprintf("template was nil"))
+	}
+	return t
+}
 
 // Template is a wrapper around a Template (from html/template). It reads
 // template file contents from a function instead of the filesystem.
