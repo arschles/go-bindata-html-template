@@ -2,7 +2,7 @@
 
 [![GoDoc](https://godoc.org/github.com/arschles/go-bindata-html-template?status.svg)](https://godoc.org/github.com/arschles/go-bindata-html-template)
 
-go-bindata-template is a wrapper for Go's built in
+go-bindata-html-template is a wrapper for Go's built in
 [`html/template`](godoc.org/html/template) package to work with template
 contents embedded with the go-bindata tool instead of contents on the
 filesystem See https://github.com/jteeuwen/go-bindata for more information
