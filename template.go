@@ -48,6 +48,11 @@ func (t *Template) Funcs(funcMap template.FuncMap) *Template {
 	return t.replaceTmpl(t.tmpl.Funcs(funcMap))
 }
 
+//Delims is a proxy to the underlying template's Delims function
+func (t *Template) Delims(left, right string) *Template {
+	return t.replaceTmpl(t.tmpl.Delims(left, right))
+}
+
 // Parse looks up the filename in the underlying Asset store,
 // then calls the underlying template's Parse function with the result.
 // returns an error if the file wasn't found or the Parse call failed
