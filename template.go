@@ -6,6 +6,11 @@ import (
 	"fmt"
 )
 
+// FuncMap is a convenience type that mirrors the FuncMap type in html/template
+type FuncMap template.FuncMap
+
+// AssetFunc is the function that go-bindata generates to look up a file
+// by name
 type AssetFunc func(string) ([]byte, error)
 
 // Must is a helper that wraps a call to a function returning
@@ -44,8 +49,8 @@ func (t *Template) Name() string {
 }
 
 // Funcs is a proxy to the underlying template's Funcs function
-func (t *Template) Funcs(funcMap template.FuncMap) *Template {
-	return t.replaceTmpl(t.tmpl.Funcs(funcMap))
+func (t *Template) Funcs(funcMap FuncMap) *Template {
+	return t.replaceTmpl(t.tmpl.Funcs(template.FuncMap(funcMap)))
 }
 
 //Delims is a proxy to the underlying template's Delims function
