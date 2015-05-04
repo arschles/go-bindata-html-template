@@ -1,9 +1,9 @@
 package template
 
 import (
+	"fmt"
 	"html/template"
 	"io"
-	"fmt"
 )
 
 // FuncMap is a convenience type that mirrors the FuncMap type in html/template

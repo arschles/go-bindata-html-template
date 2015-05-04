@@ -1,12 +1,12 @@
 package template
 
 import (
+	"bytes"
 	"errors"
 	"github.com/arschles/assert"
+	"html/template"
 	"testing"
 	"testing/quick"
-  "html/template"
-  "bytes"
 )
 
 func createValidAssetFunc(name string, bytes []byte, notFound error) AssetFunc {
@@ -56,24 +56,24 @@ func TestParse(t *testing.T) {
 	assert.True(t, tmpl2 == nil, "tmpl2 was not nil when it should have been")
 
 	//TODO: check actual template output
-  name := "Aaron"
-  tmplData := map[string]string {
-    "name":name,
-  }
-  buf1 := bytes.NewBuffer([]byte{})
-  executeErr1 := tmpl1.Execute(buf1, tmplData)
-  stdTmpl, stdTmplParseErr := template.New("referenceTest").Parse(tmpl)
-  assert.NoErr(t, stdTmplParseErr)
-  buf2 := bytes.NewBuffer([]byte{})
-  executeErr2 := stdTmpl.Execute(buf2, tmplData)
+	name := "Aaron"
+	tmplData := map[string]string{
+		"name": name,
+	}
+	buf1 := bytes.NewBuffer([]byte{})
+	executeErr1 := tmpl1.Execute(buf1, tmplData)
+	stdTmpl, stdTmplParseErr := template.New("referenceTest").Parse(tmpl)
+	assert.NoErr(t, stdTmplParseErr)
+	buf2 := bytes.NewBuffer([]byte{})
+	executeErr2 := stdTmpl.Execute(buf2, tmplData)
 
-  assert.NoErr(t, executeErr1)
-  assert.NoErr(t, executeErr2)
+	assert.NoErr(t, executeErr1)
+	assert.NoErr(t, executeErr2)
 
-  bytes1 := buf1.Bytes()
-  bytes2 := buf2.Bytes()
+	bytes1 := buf1.Bytes()
+	bytes2 := buf2.Bytes()
 
-  assert.True(t,
-    string(bytes1) == string(bytes2),
-    "actual template output %s is not equal expected %s", string(bytes1), string(bytes2))
+	assert.True(t,
+		string(bytes1) == string(bytes2),
+		"actual template output %s is not equal expected %s", string(bytes1), string(bytes2))
 }
