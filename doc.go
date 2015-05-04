@@ -1,4 +1,4 @@
-// package template allows standard html/template templates to be rendered from
+// Package template allows standard html/template templates to be rendered from
 // contents embedded with the go-bindata tool instead of the filesystem
 //
 // See https://github.com/jteeuwen/go-bindata for more information
