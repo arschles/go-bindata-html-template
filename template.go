@@ -9,6 +9,10 @@ import (
 // FuncMap is a convenience type that mirrors the FuncMap type in html/template
 type FuncMap template.FuncMap
 
+// HTML is another convenience type that mirrors the HTML type in html/template
+// (http://golang.org/src/html/template/content.go?h=HTML#L120)
+type HTML string
+
 // AssetFunc is the function that go-bindata generates to look up a file
 // by name
 type AssetFunc func(string) ([]byte, error)
