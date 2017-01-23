@@ -102,6 +102,11 @@ func (t *Template) Execute(w io.Writer, data interface{}) error {
 	return t.tmpl.Execute(w, data)
 }
 
+// ExecuteTemplate is a proxy to the underlying template's ExecuteTemplate function
+func (t *Template) ExecuteTemplate(wr io.Writer, name string, data interface{}) error {
+	return t.tmpl.ExecuteTemplate(wr, name, data)
+}
+
 // replaceTmpl is a convenience function to replace t.tmpl with the given tmpl
 func (t *Template) replaceTmpl(tmpl *template.Template) *Template {
 	t.tmpl = tmpl
